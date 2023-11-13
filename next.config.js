@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
-const branchName = process.env.BRANCH_NAME ? "/" + process.env.BRANCH_NAME : "";
+const urlPrefix = process.env.URL_PREFIX ? '/' + process.env.URL_PREFIX : ''
 
 const nextConfig = {
   output: 'export',
   reactStrictMode: true,
-  assetPrefix: branchName,
-  basePath: branchName,
+  basePath: '/todo-lists',
 };
 
 module.exports = nextConfig;
