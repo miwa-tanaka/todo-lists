@@ -1,4 +1,6 @@
 import Header from "@/components/header"
+import Lists from "@/components/list"
+import AddTasks from "@/components/button"
 
 export default function Home(): JSX.Element {
   return (
@@ -7,8 +9,11 @@ export default function Home(): JSX.Element {
         <Header />
       </header>
       <main>
-        <h1>Hello World</h1>
+        <Lists />
       </main>
+      <footer>
+        <AddTasks />
+      </footer>
     </>
   )
 }
