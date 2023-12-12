@@ -1,7 +1,20 @@
-import { useEffect, useState } from 'react';
-import { Text, Flex } from '@chakra-ui/react'
+import { useEffect, useState } from "react";
+import { Text, Flex } from "@chakra-ui/react";
 
-const Months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+const Months = [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AUG",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DEC",
+];
 
 export default function Dates(): JSX.Element {
   const [year, setYear] = useState<number>(NaN);
@@ -18,10 +31,19 @@ export default function Dates(): JSX.Element {
 
   return (
     <Flex alignItems="center">
-      <Text fontSize="5xl" fontWeight={700}>{`${date}`}</Text>
+      <Text
+        fontSize="5xl"
+        fontWeight={700}
+      >{`${date}`}</Text>
       <Flex flexDirection="column" pl={2}>
-        <Text fontSize="sm" fontWeight={700}>{`${month}`}</Text>
-        <Text fontSize="sm" fontWeight={700}>{`${year}`}</Text>
+        <Text
+          fontSize="sm"
+          fontWeight={700}
+        >{`${month}`}</Text>
+        <Text
+          fontSize="sm"
+          fontWeight={700}
+        >{`${year}`}</Text>
       </Flex>
     </Flex>
   );
