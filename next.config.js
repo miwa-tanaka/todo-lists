@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
-const urlPrefix = process.env.URL_PREFIX ? '/' + process.env.URL_PREFIX : ''
+const urlPrefix = process.env.URL_PREFIX
+  ? "/" + process.env.URL_PREFIX
+  : "";
 
 const nextConfig = {
-  output: 'export',
+  output: "export",
   reactStrictMode: true,
-  basePath: '/todo-lists',
+  basePath: "/todo-lists",
 };
 
 module.exports = nextConfig;
