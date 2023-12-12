@@ -1,4 +1,4 @@
-import { InputGroup, Input, InputRightElement, Button, FormControl, FormErrorMessage } from '@chakra-ui/react'
+import { Box, InputGroup, Input, InputRightElement, Button, FormControl, FormErrorMessage } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
 import { useForm } from 'react-hook-form';
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -39,7 +39,12 @@ export default function AddTasks() {
   return (
     <form onSubmit={handleSubmit(useOnSubmit)}>
       <FormControl isInvalid={Boolean(errors.task)}>
-        <InputGroup maxW="2xl" m="0 auto">
+        <Box h='30px'>
+          <FormErrorMessage m={0} justifyContent="center" fontWeight={700}>
+            {errors.task && errors.task.message}
+          </FormErrorMessage>
+        </Box>
+        <InputGroup maxW="2xl" h='50px' m="0 auto" px={2}>
             <Input
                 pr='4.5rem'
                 focusBorderColor='pink.400'
@@ -59,9 +64,6 @@ export default function AddTasks() {
                 </Button>
               </InputRightElement>
           </InputGroup>
-          <FormErrorMessage>
-            {errors.task && errors.task.message}
-          </FormErrorMessage>
       </FormControl>
     </form>
   );

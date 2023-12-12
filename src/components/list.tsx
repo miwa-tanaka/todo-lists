@@ -12,24 +12,28 @@ export default function Lists() {
 
   function checkoffTask (key: number) {
     const newArray = formInfo.filter(n => n.k !== key);
-    console.log(newArray, "after new array")
     setInput(newArray);
   }
 
   return (
-    <Box py={10} maxW="3xl" m="0 auto 30px" maxH="70vh" overflow="scroll">
-      <List spacing={3} px={5}>
-        {formInfo.map((value, i) =>
-          <ListItem key={i} display="flex" justifyContent="space-between" mb={5}>
-            <Text>{value.t}</Text>
-            <Button
-              onClick={() => checkoffTask(value.k)} colorScheme='pink' h='1.75rem' size='sm'
-              borderRadius="full" _hover={{ bgColor: "pink.300" }}>
-              <CheckIcon />
-            </Button>
-          </ListItem>
-        )}
+    <Box py={10} h="calc(100vh - 180px)" overflow="scroll">
+      {formInfo.length < 1 ? (
+        <Text textAlign="center">Hooray &#128588; There is no task!</Text>
+      ) : (
+        <List maxW="100%" px={5}>
+          {formInfo.map((value, i) =>
+            <ListItem key={i} display="flex" justifyContent="space-between" alignItems="center" py={3} px={2} borderBottom="1px"
+            borderColor='gray.200' _even={{ backgroundColor: 'gray.50' }} _hover={{ backgroundColor: 'yellow.50'}}>
+              <Text overflow="auto">{value.t}</Text>
+              <Button
+                onClick={() => checkoffTask(value.k)} colorScheme='pink' h='1.75rem' size='sm' ml={3}
+                borderRadius="full" _hover={{ bgColor: "pink.300" }}>
+                <CheckIcon />
+              </Button>
+            </ListItem>
+          )}
       </List>
+      )}
     </Box>
   );
 }
