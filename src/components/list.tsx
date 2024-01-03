@@ -4,6 +4,7 @@ import {
   Text,
   List,
   ListItem,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -19,8 +20,40 @@ export default function Lists() {
     setInput(newArray);
   }
 
+  const bg = useColorModeValue("white", "gray.700");
+
+  const buttonColor = useColorModeValue(
+    "pink.400",
+    "pink.700",
+  );
+
+  const hoverButtonColor = useColorModeValue(
+    "pink.300",
+    "pink.600",
+  );
+
+  const borderColor = useColorModeValue(
+    "gray.200",
+    "gray.700",
+  );
+
+  const evenBgColor = useColorModeValue(
+    "gray.50",
+    "gray.600",
+  );
+
+  const hoverBgColor = useColorModeValue(
+    "yellow.50",
+    "blackAlpha.300",
+  );
+
   return (
-    <Box py={10} h="calc(100vh - 180px)" overflow="scroll">
+    <Box
+      py={10}
+      h="calc(100vh - 180px)"
+      overflow="scroll"
+      bgColor={bg}
+    >
       {formInfo.length < 1 ? (
         <Text textAlign="center">
           Hooray &#128588; There is no task!
@@ -36,21 +69,21 @@ export default function Lists() {
               py={3}
               px={2}
               borderBottom="1px"
-              borderColor="gray.200"
-              _even={{ backgroundColor: "gray.50" }}
-              _hover={{ backgroundColor: "yellow.50" }}
+              borderColor={borderColor}
+              _even={{ backgroundColor: evenBgColor }}
+              _hover={{ backgroundColor: hoverBgColor }}
             >
               <Text overflow="auto">{value.t}</Text>
               <Button
                 onClick={() => checkoffTask(value.k)}
-                colorScheme="pink"
+                bgColor={buttonColor}
                 h="1.75rem"
                 size="sm"
                 ml={3}
                 borderRadius="full"
-                _hover={{ bgColor: "pink.300" }}
+                _hover={{ bgColor: hoverButtonColor }}
               >
-                <CheckIcon />
+                <CheckIcon color={bg} />
               </Button>
             </ListItem>
           ))}
