@@ -4,11 +4,12 @@ import {
   Text,
   List,
   ListItem,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { formData } from "../atoms/dataAtom";
-import type { taskObj } from "@/components/button";
+import type { taskObj } from "@/components/form";
 
 export default function Lists() {
   const formInfo: taskObj[] = useRecoilValue(formData);
@@ -19,11 +20,31 @@ export default function Lists() {
     setInput(newArray);
   }
 
+  const listBorderColor = useColorModeValue(
+    "gray.200",
+    "gray.700",
+  );
+
+  const listEvenBgColor = useColorModeValue(
+    "gray.50",
+    "gray.600",
+  );
+
+  const listHoverBgColor = useColorModeValue(
+    "yellow.50",
+    "blackAlpha.300",
+  );
+
   return (
-    <Box py={10} h="calc(100vh - 180px)" overflow="scroll">
+    <Box
+      py={10}
+      h="calc(100vh - 180px)"
+      overflow="scroll"
+      className="bgColor"
+    >
       {formInfo.length < 1 ? (
         <Text textAlign="center">
-          Hooray &#128588; There is no task!
+          Hooray &#128588; no task here!
         </Text>
       ) : (
         <List maxW="100%" px={5}>
@@ -36,21 +57,20 @@ export default function Lists() {
               py={3}
               px={2}
               borderBottom="1px"
-              borderColor="gray.200"
-              _even={{ backgroundColor: "gray.50" }}
-              _hover={{ backgroundColor: "yellow.50" }}
+              borderColor={listBorderColor}
+              _even={{ backgroundColor: listEvenBgColor }}
+              _hover={{ backgroundColor: listHoverBgColor }}
             >
               <Text overflow="auto">{value.t}</Text>
               <Button
                 onClick={() => checkoffTask(value.k)}
-                colorScheme="pink"
                 h="1.75rem"
                 size="sm"
                 ml={3}
                 borderRadius="full"
-                _hover={{ bgColor: "pink.300" }}
+                className="buttonColor"
               >
-                <CheckIcon />
+                <CheckIcon className="fontColor" />
               </Button>
             </ListItem>
           ))}

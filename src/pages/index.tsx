@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import Lists from "@/components/list";
-import AddTasks from "@/components/button";
+import Form from "@/components/form";
 import { Box } from "@chakra-ui/react";
 
 export default function Home(): JSX.Element {
@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
           <Lists />
         </main>
         <footer>
-          <AddTasks />
+          <Form />
         </footer>
       </Box>
     </Box>

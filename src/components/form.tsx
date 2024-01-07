@@ -21,13 +21,14 @@ export type taskObj = {
   k: number;
 };
 
-export default function AddTasks() {
+export default function Form() {
   const {
     handleSubmit,
     register,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<task>();
+
   const [input, setInput] = useRecoilState(formData);
   const [total, setTotal] = useRecoilState(totalTasks);
 
@@ -46,7 +47,10 @@ export default function AddTasks() {
 
   return (
     <form onSubmit={handleSubmit(useOnSubmit)}>
-      <FormControl isInvalid={Boolean(errors.task)}>
+      <FormControl
+        isInvalid={Boolean(errors.task)}
+        className="bgColor"
+      >
         <Box h="30px">
           <FormErrorMessage
             m={0}
@@ -59,25 +63,27 @@ export default function AddTasks() {
         <InputGroup maxW="2xl" h="50px" m="0 auto" px={2}>
           <Input
             pr="4.5rem"
-            focusBorderColor="pink.400"
             placeholder="Type tasks"
             borderRadius="full"
             id="task"
             {...register("task", {
               required: "This is required",
             })}
+            className="borderColor"
           />
           <InputRightElement width="4.5rem">
             <Button
               h="1.75rem"
               size="sm"
-              bgColor="pink.500"
               borderRadius="full"
-              _hover={{ bgColor: "pink.300" }}
               isLoading={isSubmitting}
               type="submit"
+              className="buttonColor"
             >
-              <AddIcon color="white" fontWeight={700} />
+              <AddIcon
+                className="fontColor"
+                fontWeight={700}
+              />
             </Button>
           </InputRightElement>
         </InputGroup>
