@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import type { taskObj } from "@/components/button";
+import type { taskObj } from "@/components/form";
 
 // tasks
 export const formData = atom({

@@ -9,7 +9,7 @@ import {
 import { CheckIcon } from "@chakra-ui/icons";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { formData } from "../atoms/dataAtom";
-import type { taskObj } from "@/components/button";
+import type { taskObj } from "@/components/form";
 
 export default function Lists() {
   const formInfo: taskObj[] = useRecoilValue(formData);
@@ -20,29 +20,17 @@ export default function Lists() {
     setInput(newArray);
   }
 
-  const bg = useColorModeValue("white", "gray.700");
-
-  const buttonColor = useColorModeValue(
-    "pink.400",
-    "pink.700",
-  );
-
-  const hoverButtonColor = useColorModeValue(
-    "pink.300",
-    "pink.600",
-  );
-
-  const borderColor = useColorModeValue(
+  const listBorderColor = useColorModeValue(
     "gray.200",
     "gray.700",
   );
 
-  const evenBgColor = useColorModeValue(
+  const listEvenBgColor = useColorModeValue(
     "gray.50",
     "gray.600",
   );
 
-  const hoverBgColor = useColorModeValue(
+  const listHoverBgColor = useColorModeValue(
     "yellow.50",
     "blackAlpha.300",
   );
@@ -52,7 +40,7 @@ export default function Lists() {
       py={10}
       h="calc(100vh - 180px)"
       overflow="scroll"
-      bgColor={bg}
+      className="bgColor"
     >
       {formInfo.length < 1 ? (
         <Text textAlign="center">
@@ -69,21 +57,20 @@ export default function Lists() {
               py={3}
               px={2}
               borderBottom="1px"
-              borderColor={borderColor}
-              _even={{ backgroundColor: evenBgColor }}
-              _hover={{ backgroundColor: hoverBgColor }}
+              borderColor={listBorderColor}
+              _even={{ backgroundColor: listEvenBgColor }}
+              _hover={{ backgroundColor: listHoverBgColor }}
             >
               <Text overflow="auto">{value.t}</Text>
               <Button
                 onClick={() => checkoffTask(value.k)}
-                bgColor={buttonColor}
                 h="1.75rem"
                 size="sm"
                 ml={3}
                 borderRadius="full"
-                _hover={{ bgColor: hoverButtonColor }}
+                className="buttonColor"
               >
-                <CheckIcon color={bg} />
+                <CheckIcon className="fontColor" />
               </Button>
             </ListItem>
           ))}

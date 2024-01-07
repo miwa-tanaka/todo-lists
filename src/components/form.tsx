@@ -6,7 +6,6 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
@@ -22,13 +21,14 @@ export type taskObj = {
   k: number;
 };
 
-export default function AddTasks() {
+export default function Form() {
   const {
     handleSubmit,
     register,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<task>();
+
   const [input, setInput] = useRecoilState(formData);
   const [total, setTotal] = useRecoilState(totalTasks);
 
@@ -45,23 +45,11 @@ export default function AddTasks() {
     setValue("task", "");
   }
 
-  const bg = useColorModeValue("white", "gray.700");
-
-  const borderColor = useColorModeValue(
-    "pink.400",
-    "pink.700",
-  );
-
-  const hoverBorderColor = useColorModeValue(
-    "pink.300",
-    "pink.600",
-  );
-
   return (
     <form onSubmit={handleSubmit(useOnSubmit)}>
       <FormControl
         isInvalid={Boolean(errors.task)}
-        bgColor={bg}
+        className="bgColor"
       >
         <Box h="30px">
           <FormErrorMessage
@@ -75,25 +63,27 @@ export default function AddTasks() {
         <InputGroup maxW="2xl" h="50px" m="0 auto" px={2}>
           <Input
             pr="4.5rem"
-            focusBorderColor={borderColor}
             placeholder="Type tasks"
             borderRadius="full"
             id="task"
             {...register("task", {
               required: "This is required",
             })}
+            className="borderColor"
           />
           <InputRightElement width="4.5rem">
             <Button
               h="1.75rem"
               size="sm"
-              bgColor={borderColor}
               borderRadius="full"
-              _hover={{ bgColor: hoverBorderColor }}
               isLoading={isSubmitting}
               type="submit"
+              className="buttonColor"
             >
-              <AddIcon color={bg} fontWeight={700} />
+              <AddIcon
+                className="fontColor"
+                fontWeight={700}
+              />
             </Button>
           </InputRightElement>
         </InputGroup>
