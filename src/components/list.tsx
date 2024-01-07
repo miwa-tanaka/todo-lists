@@ -56,7 +56,7 @@ export default function Lists() {
     >
       {formInfo.length < 1 ? (
         <Text textAlign="center">
-          Hooray &#128588; There is no task!
+          Hooray &#128588; no task here!
         </Text>
       ) : (
         <List maxW="100%" px={5}>
